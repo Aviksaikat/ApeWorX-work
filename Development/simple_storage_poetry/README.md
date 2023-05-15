@@ -1,4 +1,5 @@
 # Ape Simple Storage - Poetry(venv tool)
+
 ## Getting Started
 
 It's recommended that you've gone through the [apeworx getting started documentation](https://docs.apeworx.io/ape/stable/userguides/quickstart.html) before proceeding here.
@@ -29,11 +30,33 @@ cd ape-simple-storage-v23
 ```bash
 poetry install
 poetry run ape plugins install alchemy vyper
+# or
+poetry shell
+ape plugins install .
 ```
 
-3. Run unit tests
+3. Deploy the contracts
 
+```bash
+poetry shell
+ape run scripts/deploy_simple_storage.py
+# or
+poetry run ape run scripts/deploy_simple_storage.py
 ```
+
+4. specify a network
+
+```bash
+poetry run ape run scripts/deploy_simple_storage.py --network :local
+poetry run ape run scripts/get_storage.py --network :local
+```
+
+![](media/poetry.png)
+
+5. Run unit tests
+
+```bash
+# broken
 poetry run pytest
 ```
 
