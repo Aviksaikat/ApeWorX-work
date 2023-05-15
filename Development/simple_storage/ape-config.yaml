@@ -1,0 +1,16 @@
+name: simple_storage
+plugins:
+  - name: solidity
+    version: 0.6.3 # version of the plugin
+  - name: ganache
+  - name: alchemy
+  - name: hardhat
+  # - name: ens
+  # - name: etherscan
+ethereum:
+  default_network: local
+  mainnet_fork:
+    default_provider: hardhat
+test:
+  mnemonic: test test test test test test test test test test test junk
+  number_of_accounts: 10
