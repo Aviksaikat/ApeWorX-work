@@ -1,20 +1,19 @@
-name: simple_storage
+name: fallback
 plugins:
   - name: solidity
     version: 0.6.3 # version of the plugin
   - name: ganache
   - name: alchemy
-  - name: hardhat
-  # - name: ens
-  # - name: etherscan
 ethereum:
-  default_network: mainnet-fork
-  mainnet_fork:
+  default_network: local
+  sepolia_fork:
     default_provider: ganache
 ganache:
+  server:
+    port: auto
   fork:
     ethereum:
-      mainnet:
+      sepolia:
         upstream_provider: alchemy
 test:
   mnemonic: test test test test test test test test test test test junk
