@@ -1,0 +1,29 @@
+name: fallback
+dependencies:
+  - name: OpenZeppelin
+    github: OpenZeppelin/openzeppelin-contracts
+    version: 3.0.0
+
+solidity: 
+  import_remapping:
+    - "@openzeppelin=OpenZeppelin/3.0.0"
+
+plugins:
+  - name: solidity
+    version: 0.6.3 # version of the plugin
+  - name: ganache
+  - name: alchemy
+ethereum:
+  default_network: local
+  sepolia_fork:
+    default_provider: ganache
+ganache:
+  server:
+    port: auto
+  fork:
+    ethereum:
+      sepolia:
+        upstream_provider: alchemy
+test:
+  mnemonic: test test test test test test test test test test test junk
+  number_of_accounts: 10

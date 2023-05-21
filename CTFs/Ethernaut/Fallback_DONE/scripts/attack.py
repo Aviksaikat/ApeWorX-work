@@ -13,6 +13,7 @@ def attack():
     else:
         fallback_contract = project.Fallback.at("0x77923a4Ee93e210796C65e10419faE8A6c0569e4")
         attacker = accounts.load("ctf")
+        #attacker.set_autosign(True, passphrase=unlock_password)
 
     #print(attacker.address)
     #exit(1)
