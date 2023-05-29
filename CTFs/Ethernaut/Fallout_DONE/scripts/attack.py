@@ -15,7 +15,7 @@ def attack():
             "0xb576c3DE4F9f8378925f48b86c9E20f728F3b958"
         )
         attacker = accounts.load("ctf")
-        attacker.set_autosign(True, passphrase="chaplesslife")
+        attacker.set_autosign(True, passphrase=password)
 
     fallout_contract.Fal1out(sender=attacker, value="1 wei")
     # * get the 1 wei back hahah
