@@ -1,18 +1,19 @@
 [tool.poetry]
-name = "delegation"
+name = "TemporaryVariable"
 version = "0.1.0"
 description = ""
-authors = ["Saikat Karmakar <you@example.com>"]
+authors = ["Your Name <you@example.com>"]
 license = "MIT"
 readme = "README.md"
+packages = [{include = "TemporaryVariable"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.11"
-eth-ape = "^0.6.8"
+eth-ape = "^0.6.11"
 ape-alchemy = "^0.6.1"
 ape-ganache = "^0.6.6"
-ape-hardhat = "^0.6.5"
-ape-solidity = "^0.6.4"
+ape-solidity = "^0.6.5"
+ape-hardhat = "^0.6.6"
 
 
 [build-system]

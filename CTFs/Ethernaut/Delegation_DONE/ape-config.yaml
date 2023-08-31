@@ -1,0 +1,22 @@
+name: delegation
+plugins:
+  - name: solidity
+    #version: 0.6.3 # version of the plugin
+  - name: ganache
+  - name: alchemy
+ethereum:
+  default_network: sepolia-fork
+  sepolia_fork:
+    default_provider: ganache
+    gas_limit: max
+    default_transaction_type: 0
+ganache:
+  server:
+    port: auto
+  fork:
+    ethereum:
+      sepolia:
+        upstream_provider: alchemy
+test:
+  mnemonic: test test test test test test test test test test test junk
+  number_of_accounts: 10

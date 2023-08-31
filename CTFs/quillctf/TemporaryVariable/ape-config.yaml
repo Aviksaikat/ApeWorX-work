@@ -1,15 +1,14 @@
-name: fallback
+name: Coin Flip
 plugins:
   - name: solidity
     version: 0.6.3 # version of the plugin
   - name: ganache
   - name: alchemy
 ethereum:
-  default_network: local
+  default_network: sepolia-fork
   sepolia_fork:
     default_provider: ganache
     gas_limit: max
-    default_transaction_type: 0
 ganache:
   server:
     port: auto

@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "delegation"
+version = "0.1.0"
+description = ""
+authors = ["Saikat Karmakar <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+eth-ape = "^0.6.10"
+ape-alchemy = "^0.6.1"
+ape-ganache = "^0.6.6"
+ape-solidity = "^0.6.5"
+ape-hardhat = "^0.6.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
