@@ -1,4 +1,4 @@
-from ape import networks, accounts
+from ape import accounts, networks
 
 # All local chains across "ecosystems" have the same name
 LOCAL_CHAIN_NAMES = ["local", "development"]
@@ -23,7 +23,7 @@ def get_account(index=None, id=None, unlock_password=None):
         if unlock_password:
             account_to_use.set_autosign(True, passphrase=unlock_password)
         return account_to_use
-    
+
     # If none of the above...
     account_to_use = accounts.load("default")
     if unlock_password:

