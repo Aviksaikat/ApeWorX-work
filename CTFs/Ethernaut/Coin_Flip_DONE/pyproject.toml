@@ -9,7 +9,7 @@ packages = [{include = "coin_flip"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.11"
-eth-ape = "^0.6.10"
+eth-ape = "^0.6.27"
 ape-alchemy = "^0.6.1"
 ape-ganache = "^0.6.6"
 ape-solidity = "^0.6.5"

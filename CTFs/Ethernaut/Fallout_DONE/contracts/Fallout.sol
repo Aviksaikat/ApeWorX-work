@@ -5,7 +5,8 @@ import "@openzeppelin/math/SafeMath.sol";
 
 contract Fallout {
     using SafeMath for uint256;
-    mapping(address => uint) allocations;
+
+    mapping(address => uint256) allocations;
     address payable public owner;
 
     /* constructor */
@@ -32,7 +33,7 @@ contract Fallout {
         msg.sender.transfer(address(this).balance);
     }
 
-    function allocatorBalance(address allocator) public view returns (uint) {
+    function allocatorBalance(address allocator) public view returns (uint256) {
         return allocations[allocator];
     }
 }
