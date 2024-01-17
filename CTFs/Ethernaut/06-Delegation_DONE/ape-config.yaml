@@ -8,7 +8,7 @@ default_ecosystem: ethereum
 ethereum:
   default_network: sepolia-fork
   sepolia:
-    default_provider: infura
+    default_provider: alchemy
   sepolia_fork:
     default_provider: foundry
     default_transaction_type: 0

