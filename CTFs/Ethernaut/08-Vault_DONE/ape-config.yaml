@@ -1,0 +1,20 @@
+name: 08-Vault
+plugins:
+  - name: solidity
+  - name: alchemy
+  - name: foundry
+  - name: infura
+default_ecosystem: ethereum
+ethereum:
+  default_network: sepolia-fork
+  sepolia:
+    default_provider: alchemy
+  sepolia_fork:
+    default_provider: foundry
+    default_transaction_type: 0
+    transaction_acceptance_timeout: 600 # 5 minutes
+foundry:
+  fork:
+    ethereum:
+      sepolia_fork:
+        upstream_provider: alchemy
