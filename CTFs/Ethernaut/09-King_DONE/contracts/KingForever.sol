@@ -4,20 +4,22 @@ pragma solidity ^0.8.26;
 
 contract KingForever {
     address owner;
-    uint256 value;
+    uint256 prize;
+
 
     constructor() payable {
         owner = msg.sender;
-        value = msg.value;
+        prize = msg.value;
     }
 
-    function overthrowKing(address payable _addr) external payable {
-        (bool call_tx, ) = _addr.call{value: value}("");
+    function overthrowKing(address payable _addr) external payable{
+        (bool tx, ) = _addr.call{value: prize}("");
 
-        require(call_tx, "Error sending ETH!");
+        require(tx, "Error sending ETH!!");
     }
 
-    receive() external payable { 
-        revert("Aahhhahaha You didn't say the magic word");
+    receive() external payable {
+        revert("Ahhhhhhahha You didn't said the magic word!");
     }
+
 }

